@@ -1,23 +1,110 @@
+body {
+  background: #eee;
+}
+.mui-content {
+  background: transparent;
+  overflow: hidden;
+}
 header {
   height: 2rem;
-  display: flex;
-  background: #42b983;
+  background: #fff;
   box-sizing: border-box;
+  overflow: hidden;
 }
-header div:first-of-type {
-  flex: 4;
+header .left {
+  float: left;
+  width: 40%;
+  position: relative;
 }
-header div:first-of-type select {
+header .left .down {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+}
+header .left select {
   margin: 0;
   font-size: .6rem;
   border-radius: 0;
+  line-height: 1;
 }
-header div:first-of-type .mui-btn-block {
+header .left .mui-btn-block {
   margin-bottom: 0;
   padding: 0 .6rem;
   box-sizing: border-box;
   height: 2rem;
 }
-header div:last-of-type {
-  flex: 6;
+header .left .mui-btn {
+  line-height: 2rem;
+}
+header .right {
+  float: left;
+  width: 60%;
+  overflow: hidden;
+}
+header .right div input {
+  background: transparent;
+}
+header .right div .mui-placeholder {
+  font-size: .6rem;
+}
+.navigator {
+  padding: 0 0 15px 0;
+  box-sizing: border-box;
+  background: #fff;
+}
+.navigator .mui-table-view:before,
+.navigator .mui-table-view:after {
+  background: transparent;
+}
+.navigator li {
+  padding: 15px 0 0 14px!important;
+}
+.navigator li a {
+  text-align: center;
+}
+.navigator li a .mui-media-body {
+  font-size: .6rem!important;
+  margin-top: 10px!important;
+}
+.navigator li a .icon {
+  width: 2rem;
+  height: 2rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #42b983;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigator li a .icon span {
+  color: #fff;
+}
+.preparedMedicine {
+  margin: .5rem auto;
+  background: #fff;
+}
+.preparedMedicine .pmHeader {
+  height: 1.8rem;
+  padding: 0 .5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.preparedMedicine .pmHeader div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #42b983;
+}
+.preparedMedicine .pmHeader div:last-of-type {
+  font-size: .6rem;
+  justify-content: flex-end;
+  color: #666;
+}
+.preparedMedicine .pmHeader div:last-of-type .mui-icon {
+  font-size: .6rem;
 }

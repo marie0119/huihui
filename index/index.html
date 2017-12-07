@@ -14,22 +14,80 @@
 </head>
 <body>
 <div id="indexApp">
-    <header>
-        <div>
-            <select class="mui-btn mui-btn-block">
-                <option value="item-1">华亿科学园</option>
-                <option value="item-2">item-2</option>
-                <option value="item-3">item-3</option>
-                <option value="item-4">item-4</option>
-                <option value="item-5">item-5</option>
-            </select>
+    <div class="mui-content">
+        <!--头部-->
+        <header>
+            <div class="left">
+                <img src="../img/down.png" alt="" class="down">
+                <select class="mui-btn mui-btn-block">
+                    <option value="item-1">华亿科学园</option>
+                    <option value="item-2">item-2</option>
+                    <option value="item-3">item-3</option>
+                    <option value="item-4">item-4</option>
+                    <option value="item-5">item-5</option>
+                </select>
+            </div>
+            <!--搜索商家、商品、品类-->
+            <div class="right">
+                <div class="mui-content-padded" style="margin: 5px;">
+                    <div class="mui-input-row mui-search">
+                        <input type="search" class="mui-input-clear" placeholder="搜索商家、商品、品类">
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!--轮播图-->
+        <div class="mui-slider">
+            <div class="mui-slider-group mui-slider-loop">
+                <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#">
+                        <img src="../img/yuantiao.jpg">
+                    </a>
+                </div>
+                <!-- 第x张 -->
+                <div class="mui-slider-item" v-for="item in swiper">
+                    <a href="#">
+                        <img :src="item">
+                    </a>
+                </div>
+                <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#">
+                        <img src="../img/shuijiao.jpg">
+                    </a>
+                </div>
+            </div>
+            <div class="mui-slider-indicator">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+            </div>
         </div>
-        <div>
-            <!--<input type="search" class="mui-input-clear" placeholder="搜索商家、商品、品类">-->
+
+        <!--导航菜单-->
+        <div class="navigator">
+            <ul class="mui-table-view mui-grid-view">
+                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" v-for="item in navList"><a href="#">
+                    <div class="icon"><span class="mui-icon" :class="item.icon"></span></div>
+                    <div class="mui-media-body">{{item.title}}</div>
+                </a></li>
+            </ul>
         </div>
-    </header>
+        <!--常备药品-->
+        <div class="preparedMedicine">
+            <div class="pmHeader">
+                <div class="title">常备药品</div>
+                <div class="more">
+                    <span>更多</span>
+                    <span class="mui-icon mui-icon-arrowright"></span>
+                </div>
+            </div>
+        </div>
         <footer-component :footer-active="0"></footer-component>
-    </nav>
+    </div>
 </div>
 </body>
 
@@ -40,11 +98,53 @@
 <script>
     var vm = new Vue({
         el: '#indexApp',
-        data:{
+        data: {
+            swiper: [
+                '../img/shuijiao.jpg', '../img/muwu.jpg', '../img/cbd.jpg', '../img/yuantiao.jpg'
+            ],
+            navList: [
+                {
+                    icon: 'mui-icon-search',
+                    title: '找药店'
+                },
+                {
+                    icon: 'mui-icon-paperplane',
+                    title: '健康资讯'
+                },
+                {
+                    icon: 'mui-icon-locked',
+                    title: '常备药品'
+                },
+                {
+                    icon: 'mui-icon-paperclip',
+                    title: '慢性病'
+                },
+                {
+                    icon: 'mui-icon-starhalf',
+                    title: '感冒发烧'
+                },
+                {
+                    icon: 'mui-icon-loop',
+                    title: '滋补保健'
+                },
+                {
+                    icon: 'mui-icon-gear',
+                    title: '医疗器械'
+                },
+                {
+                    icon: 'mui-icon-refresh',
+                    title: '家庭养生'
+                },
+            ]
         },
-        components:{
+        components: {
             footerComponent
         }
     })
+    //    mui
+    var gallery = mui('.mui-slider'); //    轮播图
+    gallery.slider({
+        interval: 2000//自动轮播周期，若为0则不自动播放，默认为0；
+    });
 </script>
 </html>
