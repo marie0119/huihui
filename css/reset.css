@@ -1,0 +1,16 @@
+@charset "utf-8";
+html{font-family:Helvetica,STHeiTi,sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-font-smoothing: antialiased;}
+body{font-size:14px;margin:0;color:#333;background:#fff}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}
+article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul{margin:0;padding:0}
+a{-webkit-touch-callout:none;text-decoration:none;color:#333;outline:0}
+a:active,a:hover{outline:0}
+a,img{-webkit-tap-highlight-color:rgba(0,0,0,.1)}
+img {border:0}
+ul,li{list-style:none}
+h1,h2,h3,h4,h5,h6{font:inherit;font-weight:400}
+.clearfix:after{ display: block; clear: both; content: "\0020"; visibility: hidden; height: 0 }
+a,img{-webkit-touch-callout:none}
+img{max-width: 100%}
+i{color: #888;font-style: normal;}
+table{border-collapse:collapse;border-spacing:0;}

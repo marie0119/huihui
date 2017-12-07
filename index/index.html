@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>惠惠|首页</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <script src="../js/flex_rem.js"></script>
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div id="indexApp">
+    <header>
+        <div>
+            <select class="mui-btn mui-btn-block">
+                <option value="item-1">华亿科学园</option>
+                <option value="item-2">item-2</option>
+                <option value="item-3">item-3</option>
+                <option value="item-4">item-4</option>
+                <option value="item-5">item-5</option>
+            </select>
+        </div>
+        <div>
+            <!--<input type="search" class="mui-input-clear" placeholder="搜索商家、商品、品类">-->
+        </div>
+    </header>
+        <footer-component :footer-active="0"></footer-component>
+    </nav>
+</div>
+</body>
+
+<script src="../js/utils/mui.min.js"></script>
+<script src="../js/utils/vue.js"></script>
+<script src="../js/components/footer.js"></script>
+<script src="../js/common.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#indexApp',
+        data:{
+        },
+        components:{
+            footerComponent
+        }
+    })
+</script>
+</html>

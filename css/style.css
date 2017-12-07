@@ -1,0 +1,8 @@
+.mui-bar-tab .mui-tab-item.mui-active {
+  color: #3dd88a;
+}
+.mui-bar-tab li {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
