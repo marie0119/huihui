@@ -1,9 +1,12 @@
 body {
   background: #eee;
+  line-height: 1;
 }
 .mui-content {
   background: transparent;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 0 5rem 0;
 }
 header {
   height: 2rem;
@@ -61,14 +64,14 @@ header .right div .mui-placeholder {
   background: transparent;
 }
 .navigator li {
-  padding: 15px 0 0 14px!important;
+  padding: 15px 0 0 14px !important;
 }
 .navigator li a {
   text-align: center;
 }
 .navigator li a .mui-media-body {
-  font-size: .6rem!important;
-  margin-top: 10px!important;
+  font-size: .6rem !important;
+  margin-top: 10px !important;
 }
 .navigator li a .icon {
   width: 2rem;
@@ -99,12 +102,168 @@ header .right div .mui-placeholder {
   display: flex;
   align-items: center;
   color: #42b983;
+  font-weight: bold;
 }
 .preparedMedicine .pmHeader div:last-of-type {
+  font-weight: normal;
   font-size: .6rem;
   justify-content: flex-end;
   color: #666;
 }
 .preparedMedicine .pmHeader div:last-of-type .mui-icon {
   font-size: .6rem;
+}
+.preparedMedicine .pmMedicine {
+  box-sizing: border-box;
+  display: flex;
+}
+.preparedMedicine .pmMedicine li {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: .5rem 0 .2rem;
+}
+.preparedMedicine .pmMedicine li a {
+  display: block;
+}
+.preparedMedicine .pmMedicine li a img {
+  width: 3rem;
+  height: 3rem;
+}
+.preparedMedicine .pmMedicine li span {
+  display: block;
+  text-align: center;
+}
+.preparedMedicine .pmMedicine li span.name {
+  margin: .5rem auto;
+  width: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .5rem;
+}
+.preparedMedicine .pmMedicine li span.price {
+  color: #f00;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+.pharmacy {
+  box-sizing: border-box;
+  padding: 0 .5rem;
+  background: #fff;
+}
+.pharmacy .pHeader {
+  height: 2rem;
+  color: #1acbb4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.pharmacy .pHeader span {
+  display: inline-block;
+  font-weight: bold;
+}
+.pharmacy .pHeader span.title {
+  margin: 0 .4rem;
+}
+.pharmacy .pHeader span.line {
+  width: .8rem;
+  border-bottom: 1px solid #1acbb4;
+}
+.pharmacy .pHeader .more {
+  position: absolute;
+  right: 0rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pharmacy .pHeader .more span {
+  color: #c0c0c0;
+  font-weight: normal;
+}
+.pharmacy .pHeader .more span.mui-icon {
+  font-size: .8rem;
+}
+.pharmacy .shop {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: .5rem 0 1rem;
+}
+.pharmacy .shop .shopLeft {
+  display: flex;
+  align-items: center;
+  width: calc(96%);
+}
+.pharmacy .shop .shopLeft img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: .5rem;
+}
+.pharmacy .shop .shopLeft .description {
+  height: 2.4rem;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+.pharmacy .shop .shopLeft .description .name {
+  font-weight: bold;
+}
+.pharmacy .shop .shopLeft .description .detail {
+  font-size: .6rem;
+}
+.pharmacy .shop .shopLeft .description .detail .star {
+  color: #fa952f;
+  margin-right: .2rem;
+}
+.pharmacy .shop .shopLeft .description .detail .star .mui-icon {
+  font-size: .85rem;
+}
+.pharmacy .shop .shopLeft .description .detail .order {
+  color: #999;
+}
+.pharmacy .shop .shopRight {
+  width: 4rem;
+  justify-content: flex-end;
+  display: inline-flex;
+  height: 1rem;
+  color: #999;
+  align-items: center;
+}
+.pharmacy .medicine {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 0 1rem 0;
+}
+.pharmacy .medicine li {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+.pharmacy .medicine li img {
+  width: 4rem;
+  height: 4rem;
+}
+.pharmacy .medicine li span {
+  display: block;
+  width: 4.5rem;
+  text-align: center;
+  font-weight: 400;
+  font-size: .6rem;
+}
+.pharmacy .medicine li .name {
+  height: 2rem;
+  line-height: 1.5;
+  color: #333;
+}
+.pharmacy .medicine li .price {
+  height: 1.25rem;
+  line-height: 1.25rem;
+  color: #f00;
 }

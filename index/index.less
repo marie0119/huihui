@@ -1,10 +1,15 @@
-body{
+body {
   background: #eee;
+  line-height: 1;
 }
-.mui-content{
+.mui-content {
   background: transparent;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 0 5rem 0;
+
 }
+
 header {
   height: 2rem;
   background: #fff;
@@ -55,19 +60,19 @@ header {
 }
 
 .navigator {
-  padding:0 0 15px 0;
+  padding: 0 0 15px 0;
   box-sizing: border-box;
   background: #fff;
-  .mui-table-view:before,.mui-table-view:after{
+  .mui-table-view:before, .mui-table-view:after {
     background: transparent;
   }
-  li{
-    padding: 15px 0 0 14px!important;
+  li {
+    padding: 15px 0 0 14px !important;
     a {
       text-align: center;
       .mui-media-body {
-        font-size: .6rem!important;
-        margin-top: 10px!important;
+        font-size: .6rem !important;
+        margin-top: 10px !important;
       }
       .icon {
         width: 2rem;
@@ -85,27 +90,184 @@ header {
     }
   }
 }
-.preparedMedicine{
+
+.preparedMedicine {
   margin: .5rem auto;
   background: #fff;
-  .pmHeader{
+  .pmHeader {
     height: 1.8rem;
     padding: 0 .5rem;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    div{
+    div {
       flex: 1;
       display: flex;
       align-items: center;
       color: #42b983;
+      font-weight: bold;
     }
-    div:last-of-type{
+    div:last-of-type {
+      font-weight: normal;
       font-size: .6rem;
       justify-content: flex-end;
-      color:#666;
-      .mui-icon{
+      color: #666;
+      .mui-icon {
         font-size: .6rem;
+      }
+    }
+  }
+  .pmMedicine {
+    box-sizing: border-box;
+    display: flex;
+    li {
+      flex: 1;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: .5rem 0 .2rem;
+      a {
+        display: block;
+        img {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      span {
+        display: block;
+        text-align: center;
+      }
+      span.name {
+        margin: .5rem auto;
+        width: 4rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: .5rem;
+      }
+      span.price {
+        color: #f00;
+        font-weight: bold;
+        width: 100%;
+        margin-bottom: .5rem;
+      }
+    }
+  }
+}
+.pharmacy{
+  box-sizing: border-box;
+  padding: 0 .5rem;
+  background: #fff;
+  .pHeader{
+    height: 2rem;
+    color: #1acbb4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    span{
+      display: inline-block;
+      font-weight: bold;
+    }
+    span.title{
+      margin: 0 .4rem;
+    }
+    span.line{
+      width: .8rem;
+      border-bottom: 1px solid #1acbb4;
+    }
+    .more{
+      position: absolute;
+      right: 0rem;
+      top: 50%;
+      transform: translateY(-50%);
+      span{
+        color: #c0c0c0;
+        font-weight: normal;
+      }
+      span.mui-icon{
+        font-size: .8rem;
+      }
+    }
+  }
+  .shop{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: .5rem 0 1rem;
+    .shopLeft{
+      display: flex;
+      align-items: center;
+      width: calc(100% - 4rem);
+      img{
+        width: 3rem;
+        height: 3rem;
+        margin-right: .5rem;
+      }
+      .description{
+        height: 2.4rem;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        .name{
+          font-weight: bold;
+        }
+        .detail{
+          font-size: .6rem;
+          .star{
+            color: #fa952f;
+            .mui-icon{
+              font-size: .85rem;
+            }
+            margin-right: .2rem;
+          }
+          .order{
+            color: #999;
+          }
+        }
+      }
+    }
+    .shopRight{
+      width: 4rem;
+      justify-content: flex-end;
+      display: inline-flex;
+      height: 1rem;
+      color: #999;
+      align-items: center;
+    }
+  }
+  .medicine{
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 0 1rem 0;
+    li{
+      flex: 1;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      img{
+        width:4rem;
+        height: 4rem;
+      }
+      span{
+        display: block;
+        width: 4.5rem;
+        text-align: center;
+        font-weight: 400;
+        font-size: .6rem;
+      }
+      .name{
+        height: 2rem;
+        line-height: 1.5;
+        color: #333;
+      }
+      .price{
+        height: 1.25rem;
+        line-height: 1.25rem;
+        color: #f00;
       }
     }
   }

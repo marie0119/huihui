@@ -13,18 +13,14 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<div id="indexApp">
+<div id="indexApp" v-cloak>
     <div class="mui-content">
         <!--头部-->
         <header>
             <div class="left">
                 <img src="../img/down.png" alt="" class="down">
                 <select class="mui-btn mui-btn-block">
-                    <option value="item-1">华亿科学园</option>
-                    <option value="item-2">item-2</option>
-                    <option value="item-3">item-3</option>
-                    <option value="item-4">item-4</option>
-                    <option value="item-5">item-5</option>
+                    <option value="item-1" v-for="item in address" v-html="item"></option>
                 </select>
             </div>
             <!--搜索商家、商品、品类-->
@@ -43,11 +39,11 @@
                 <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
                 <div class="mui-slider-item mui-slider-item-duplicate">
                     <a href="#">
-                        <img src="../img/yuantiao.jpg">
+                        <img :src="swiper[swiper.length-1]">
                     </a>
                 </div>
                 <!-- 第x张 -->
-                <div class="mui-slider-item" v-for="item in swiper">
+                <div class="mui-slider-item" v-for="(item,index) in swiper">
                     <a href="#">
                         <img :src="item">
                     </a>
@@ -55,7 +51,7 @@
                 <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
                 <div class="mui-slider-item mui-slider-item-duplicate">
                     <a href="#">
-                        <img src="../img/shuijiao.jpg">
+                        <img :src="swiper[0]">
                     </a>
                 </div>
             </div>
@@ -72,7 +68,7 @@
             <ul class="mui-table-view mui-grid-view">
                 <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" v-for="item in navList"><a href="#">
                     <div class="icon"><span class="mui-icon" :class="item.icon"></span></div>
-                    <div class="mui-media-body">{{item.title}}</div>
+                    <div class="mui-media-body" v-text="item.title"></div>
                 </a></li>
             </ul>
         </div>
@@ -85,12 +81,51 @@
                     <span class="mui-icon mui-icon-arrowright"></span>
                 </div>
             </div>
+            <ul class="pmMedicine">
+                <li v-for="item in pmList">
+                    <a href=""><img :src="item.img"></a>
+                    <span class="name" v-text="item.title"></span>
+                    <span class="price" v-text="item.price"></span>
+                </li>
+            </ul>
         </div>
-        <footer-component :footer-active="0"></footer-component>
+        <!--附近药店-->
+        <div class="pharmacy">
+            <div class="pHeader">
+                <span class="line"></span><span class="title">附近药店</span><span class="line"></span>
+                <div class="more"><span>查看更多</span><span class="mui-icon mui-icon-arrowright"></span></div>
+            </div>
+            <div class="shop">
+                <div class="shopLeft">
+                    <img src="../img/logo.png" alt="">
+                    <div class="description">
+                        <div class="name">同仁堂大药房（万达店）</div>
+                        <div class="detail">
+                            <span class="star"><span class="mui-icon mui-icon-star"></span><span
+                                    class="mui-icon mui-icon-star"></span><span
+                                    class="mui-icon mui-icon-star"></span><span
+                                    class="mui-icon mui-icon-star"></span><span class="mui-icon mui-icon-star"></span>4.5分</span>
+                            <span class="order">月销4528单</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shopRight">
+                    <span class="position mui-icon mui-icon-paperplane"></span><span>369m</span>
+                </div>
+            </div>
+            <ul class="medicine">
+                <li v-for="item in medList">
+                    <a href=""><img :src="item.img" alt=""></a>
+                    <span class="name" v-text="item.title"></span>
+                    <span class="price" v-text="item.price"></span>
+                </li>
+            </ul>
+        </div>
     </div>
+    <footer-component :footer-active="0"></footer-component>
 </div>
 </body>
-<!--00000000000-->
+
 <script src="../js/utils/mui.min.js"></script>
 <script src="../js/utils/vue.js"></script>
 <script src="../js/components/footer.js"></script>
@@ -135,10 +170,50 @@
                     icon: 'mui-icon-refresh',
                     title: '家庭养生'
                 },
+            ],
+            address: ['华亿科技园', '黄山路', '安建大'],
+            pmList: [
+                {
+                    img: '../img/shuijiao.jpg',
+                    title: '三金西瓜霜西瓜霜',
+                    price: '￥5.36'
+                },
+                {
+                    img: '../img/yuantiao.jpg',
+                    title: '三金西瓜霜西瓜霜',
+                    price: '￥5.36'
+                },
+                {
+                    img: '../img/muwu.jpg',
+                    title: '三金西瓜霜西瓜霜',
+                    price: '￥5.36'
+                },
+                {
+                    img: '../img/cbd.jpg',
+                    title: '三金西瓜霜西瓜霜',
+                    price: '￥5.36'
+                },
+            ],
+            medList: [
+                {
+                    img: '../img/img1.png',
+                    title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                    price: '￥377.65'
+                },
+                {
+                    img: '../img/img2.png',
+                    title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                    price: '￥377.65'
+                },
+                {
+                    img: '../img/img3.png',
+                    title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                    price: '￥377.65'
+                },
             ]
         },
         components: {
-            footerComponent:footerComponent
+            footerComponent
         }
     })
     //    mui
