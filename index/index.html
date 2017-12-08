@@ -16,7 +16,6 @@
 <div id="indexApp" v-cloak>
     <div class="mui-content">
         <!--头部-->
-        <div>9999999</div>
         <header>
             <div class="left">
                 <img src="../img/down.png" alt="" class="down">
@@ -56,7 +55,6 @@
                     </a>
                 </div>
             </div>
-            <!--切换圆点-->
             <div class="mui-slider-indicator">
                 <div class="mui-indicator" v-for="(item,index) in swiper" :class="{'mui-active':index==0}"></div>
             </div>
@@ -88,40 +86,39 @@
                 </li>
             </ul>
         </div>
-        <!--附近药店--><!--附近药店--><!--附近药店-->
+        <!--附近药店-->
         <div class="pharmacy">
             <div class="pHeader">
                 <span class="line"></span><span class="title">附近药店</span><span class="line"></span>
                 <div class="more"><span>查看更多</span><span class="mui-icon mui-icon-arrowright"></span></div>
             </div>
-            <div class="shop">
-                <div class="shopLeft">
-                    <img src="../img/logo.png" alt="">
-                    <div class="description">
-                        <div class="name">同仁堂大药房（万达店）</div>
-                        <div class="detail">
-                            <span class="star"><span class="mui-icon mui-icon-star"></span><span
-                                    class="mui-icon mui-icon-star"></span><span
-                                    class="mui-icon mui-icon-star"></span><span
-                                    class="mui-icon mui-icon-star"></span><span class="mui-icon mui-icon-star"></span>4.5分</span>
-                            <span class="order">月销4528单</span>
+            <div class="shopWrap" v-for="(item,index) in pharmacy">
+                <div class="shop">
+                    <div class="shopLeft">
+                        <img :src="item.logo" alt="">
+                        <div class="description">
+                            <div class="name">{{item.shopName}}</div>
+                            <div class="detail">
+                                <span class="star">
+                                    <span class="mui-icon mui-icon-star" v-for="star in item.stars"></span> {{item.point}}</span>
+                                <span class="order">月销{{item.saleNum}}单</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="shopRight">
+                        <span class="position mui-icon mui-icon-paperplane"></span><span>{{item.distance}}</span>
+                    </div>
                 </div>
-                <div class="shopRight">
-                    <span class="position mui-icon mui-icon-paperplane"></span><span>369m</span>
-                </div>
+                <ul class="medicine">
+                    <li v-for="val in item.medList">
+                        <a href=""><img :src="val.img" alt=""></a>
+                        <span class="name" v-text="val.title"></span>
+                        <span class="price" v-text="val.price"></span>
+                    </li>
+                </ul>
             </div>
-            <ul class="medicine">
-                <li v-for="item in medList">
-                    <a href=""><img :src="item.img" alt=""></a>
-                    <span class="name" v-text="item.title"></span>
-                    <span class="price" v-text="item.price"></span>
-                </li>
-            </ul>
         </div>
     </div>
-
     <footer-component :footer-active="0"></footer-component>
 </div>
 </body>
@@ -130,6 +127,7 @@
 <script src="../js/utils/vue.js"></script>
 <script src="../js/components/footer.js"></script>
 <script src="../js/common.js"></script>
+<script src="../js/public.js"></script>
 <script>
     var vm = new Vue({
         el: '#indexApp',
@@ -194,22 +192,57 @@
                     price: '￥5.36'
                 },
             ],
-            medList: [
+            pharmacy: [
                 {
-                    img: '../img/img1.png',
-                    title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                    price: '￥377.65'
+                    logo: '../img/logo.png',
+                    shopName: '同仁堂大药房（万达店）',
+                    distance: '345m',
+                    stars: ['<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>'],
+                    point: '5星',
+                    saleNum: 987,
+                    medList: [
+                        {
+                            img: '../img/img1.png',
+                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                            price: '￥377.65'
+                        },
+                        {
+                            img: '../img/img2.png',
+                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                            price: '￥377.65'
+                        },
+                        {
+                            img: '../img/img3.png',
+                            title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                            price: '￥377.65'
+                        },
+                    ]
                 },
                 {
-                    img: '../img/img2.png',
-                    title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                    price: '￥377.65'
-                },
-                {
-                    img: '../img/img3.png',
-                    title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                    price: '￥377.65'
-                },
+                    logo: '../img/logo.png',
+                    shopName: '同仁堂大药房（万达店）',
+                    distance: '345m',
+                    stars: ['<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>'],
+                    point: '5星',
+                    saleNum: 987,
+                    medList: [
+                        {
+                            img: '../img/img1.png',
+                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                            price: '￥377.65'
+                        },
+                        {
+                            img: '../img/img2.png',
+                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                            price: '￥377.65'
+                        },
+                        {
+                            img: '../img/img3.png',
+                            title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                            price: '￥377.65'
+                        },
+                    ]
+                }
             ]
         },
         components: {
@@ -221,5 +254,7 @@
     gallery.slider({
         interval: 2000//自动轮播周期，若为0则不自动播放，默认为0；
     });
+//    ajax
+
 </script>
 </html>

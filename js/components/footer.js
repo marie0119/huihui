@@ -4,7 +4,7 @@ const footerComponent={
                 <li v-for="(item,index) in items">
                     <a class="mui-tab-item" :class="{'mui-active':index==footerActive}" :href="item.url">
                         <span class="mui-icon" :class="item.icon"></span>
-                        <span class="mui-tab-label">{{item.title}}</span>
+                        <span class="mui-tab-label" v-text="item.title"></span>
                     </a>
                 </li>
              </nav>
