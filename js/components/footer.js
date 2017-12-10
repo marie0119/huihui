@@ -1,14 +1,5 @@
 const footerComponent={
-    template: `
-             <nav class="mui-bar mui-bar-tab">
-                <li v-for="(item,index) in items">
-                    <a class="mui-tab-item" :class="{'mui-active':index==footerActive}" :href="item.url">
-                        <span class="mui-icon" :class="item.icon"></span>
-                        <span class="mui-tab-label" v-text="item.title"></span>
-                    </a>
-                </li>
-             </nav>
-        `,
+    template: "<nav class=\"mui-bar mui-bar-tab\">\n <a class=\"mui-tab-item\" v-for=\"(item,index) in items\" :class=\"{'mui-active':index==footerActive}\" :href=\"item.url\">\n<span class=\"mui-icon\" :class=\"item.icon\"></span>\n <span class=\"mui-tab-label\" v-text=\"item.title\"></span>\n</a>\n</nav> ",
     props:['footerActive'],
     data:function () {
         return {

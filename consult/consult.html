@@ -15,7 +15,9 @@
     <header>
         333
     </header>
-    <footer-component :footer-active="2"></footer-component>
+    <div class="footer">
+        <footer-component :footer-active="2"></footer-component>
+    </div>
 </div>
 </body>
 
@@ -29,7 +31,7 @@
         data:{
         },
         components:{
-            footerComponent
+            footerComponent:footerComponent
         }
     })
 </script>

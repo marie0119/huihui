@@ -17,24 +17,22 @@
     <div class="mui-content">
         <!--头部-->
         <header>
-            <div class="left">
-                <img src="../img/down.png" alt="" class="down">
-                <select class="mui-btn mui-btn-block">
-                    <option value="item-1" v-for="item in address" v-html="item"></option>
-                </select>
-            </div>
-            <!--搜索商家、商品、品类-->
-            <div class="right">
-                <div class="mui-content-padded" style="margin: 5px;">
-                    <div class="mui-input-row mui-search">
-                        <input type="search" class="mui-input-clear" placeholder="搜索商家、商品、品类">
-                    </div>
+            <div class="headLeft">
+                <img src="../img/map.png" alt="" class="map">
+                <div class="choose">
+                    <span class="name">华亿科技园</span>
+                    <img src="../img/down.png" alt="" class="down">
                 </div>
-
+            </div>
+            <div class="headRight">
+                <div class="search">
+                    <img src="../img/search.png" alt="">
+                </div>
+                <input type="text" placeholder="搜索商家、商品、品类" v-model="search">
             </div>
         </header>
         <!--轮播图-->
-        <div class="mui-slider">
+        <div class="mui-slider swiper">
             <div class="mui-slider-group mui-slider-loop">
                 <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
                 <div class="mui-slider-item mui-slider-item-duplicate">
@@ -59,42 +57,46 @@
                 <div class="mui-indicator" v-for="(item,index) in swiper" :class="{'mui-active':index==0}"></div>
             </div>
         </div>
-
         <!--导航菜单-->
-        <div class="navigator">
-            <ul class="mui-table-view mui-grid-view">
-                <li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3" v-for="item in navList"><a href="#">
-                    <div class="icon"><span class="mui-icon" :class="item.icon"></span></div>
-                    <div class="mui-media-body" v-text="item.title"></div>
-                </a></li>
-            </ul>
-        </div>
+        <ul class="navigator">
+            <li v-for="item in navList">
+                <a href="">
+                    <img :src="item.img" alt="">
+                    <span class="menu">{{item.title}}</span>
+                </a>
+            </li>
+        </ul>
         <!--常备药品-->
         <div class="preparedMedicine">
             <div class="pmHeader">
-                <div class="title">常备药品</div>
-                <div class="more">
-                    <span>更多</span>
-                    <span class="mui-icon mui-icon-arrowright"></span>
+                <span class="line"></span><span class="title">常备药品</span><span class="line"></span>
+                <a class="more" href=""><span>查看更多</span><span class="mui-icon mui-icon-arrowright"></span></a>
+            </div>
+            <div class="mui-slider">
+                <div class="mui-slider-group">
+                    <!--第一个内容区容器-->
+                    <div class="mui-slider-item" v-for="item in pmList">
+                        <!-- 具体内容 -->
+                        <ul class="pmMedicine">
+                            <li v-for="val in item">
+                                <a href=""><img :src="val.img" alt=""></a>
+                                <span class="name" v-text="val.title"></span>
+                                <span class="price" >￥ {{val.price | toMoney}}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <ul class="pmMedicine">
-                <li v-for="item in pmList">
-                    <a href=""><img :src="item.img"></a>
-                    <span class="name" v-text="item.title"></span>
-                    <span class="price" v-text="item.price"></span>
-                </li>
-            </ul>
         </div>
         <!--附近药店-->
         <div class="pharmacy">
             <div class="pHeader">
                 <span class="line"></span><span class="title">附近药店</span><span class="line"></span>
-                <div class="more"><span>查看更多</span><span class="mui-icon mui-icon-arrowright"></span></div>
+                <a class="more" href=""><span>查看更多</span><span class="mui-icon mui-icon-arrowright"></span></a>
             </div>
             <div class="shopWrap" v-for="(item,index) in pharmacy">
-                <div class="shop">
-                    <div class="shopLeft">
+                <div class="shop clearfix">
+                    <div class="shopLeft clearfix">
                         <img :src="item.logo" alt="">
                         <div class="description">
                             <div class="name">{{item.shopName}}</div>
@@ -109,17 +111,29 @@
                         <span class="position mui-icon mui-icon-paperplane"></span><span>{{item.distance}}</span>
                     </div>
                 </div>
-                <ul class="medicine">
-                    <li v-for="val in item.medList">
-                        <a href=""><img :src="val.img" alt=""></a>
-                        <span class="name" v-text="val.title"></span>
-                        <span class="price" v-text="val.price"></span>
-                    </li>
-                </ul>
+                <div class="mui-slider">
+                    <div class="mui-slider-group">
+                        <!--第一个内容区容器-->
+                        <div class="mui-slider-item" v-for="unit in item.medList">
+                            <!-- 具体内容 -->
+                            <ul class="medicine">
+                                <li v-for="val in unit">
+                                    <a href=""><img :src="val.img" alt=""></a>
+                                    <span class="name" v-text="val.title"></span>
+                                    <span class="price" >￥ {{val.price | toMoney}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <footer-component :footer-active="0"></footer-component>
+    <div class="footer">
+        <footer-component :footer-active="0"></footer-component>
+    </div>
+
 </div>
 </body>
 
@@ -127,134 +141,194 @@
 <script src="../js/utils/vue.js"></script>
 <script src="../js/components/footer.js"></script>
 <script src="../js/common.js"></script>
-<script src="../js/public.js"></script>
+<!--<script src="../js/public.js"></script>-->
 <script>
     var vm = new Vue({
         el: '#indexApp',
         data: {
+            search:'',
             swiper: [
-                '../img/shuijiao.jpg', '../img/muwu.jpg', '../img/cbd.jpg', '../img/yuantiao.jpg'
+                '../img/ban1.png', '../img/ban2.png', '../img/ban3.png'
             ],
             navList: [
+
                 {
-                    icon: 'mui-icon-search',
+                    img: '../img/nav1.png',
                     title: '找药店'
                 },
                 {
-                    icon: 'mui-icon-paperplane',
+                    img: '../img/nav2.png',
                     title: '健康资讯'
-                },
-                {
-                    icon: 'mui-icon-locked',
+                }, {
+                    img: '../img/nav3.png',
                     title: '常备药品'
                 },
                 {
-                    icon: 'mui-icon-paperclip',
+                    img: '../img/nav4.png',
                     title: '慢性病'
                 },
                 {
-                    icon: 'mui-icon-starhalf',
+                    img: '../img/nav5.png',
                     title: '感冒发烧'
                 },
                 {
-                    icon: 'mui-icon-loop',
+                    img: '../img/nav6.png',
                     title: '滋补保健'
                 },
                 {
-                    icon: 'mui-icon-gear',
+                    img: '../img/nav7.png',
                     title: '医疗器械'
                 },
                 {
-                    icon: 'mui-icon-refresh',
+                    img: '../img/nav8.png',
                     title: '家庭养生'
                 },
+
             ],
             address: ['华亿科技园', '黄山路', '安建大'],
             pmList: [
-                {
-                    img: '../img/shuijiao.jpg',
-                    title: '三金西瓜霜西瓜霜',
-                    price: '￥5.36'
-                },
-                {
-                    img: '../img/yuantiao.jpg',
-                    title: '三金西瓜霜西瓜霜',
-                    price: '￥5.36'
-                },
-                {
-                    img: '../img/muwu.jpg',
-                    title: '三金西瓜霜西瓜霜',
-                    price: '￥5.36'
-                },
-                {
-                    img: '../img/cbd.jpg',
-                    title: '三金西瓜霜西瓜霜',
-                    price: '￥5.36'
-                },
+                [
+                    {
+                        img: '../img/img1.png',
+                        title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                        price: 659.6388888
+                    },
+                    {
+                        img: '../img/img2.png',
+                        title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                        price:654.661
+                    },
+                    {
+                        img: '../img/img3.png',
+                        title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                        price:87
+                    },
+                ],
+                [
+                    {
+                        img: '../img/img2.png',
+                        title: '211钙尔奇 碳酸钙D3 咀嚼片30片',
+                        price: 34
+                    },
+                    {
+                        img: '../img/img3.png',
+                        title: '222钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                        price: 56
+                    },
+                    {
+                        img: '../img/img1.png',
+                        title: '223钙尔奇 碳酸钙D3 咀嚼片30片',
+                        price: 89
+                    },
+                ]
             ],
             pharmacy: [
                 {
                     logo: '../img/logo.png',
-                    shopName: '同仁堂大药房（万达店）',
+                    shopName: '同仁堂大药房（万达店）同仁堂大药房（万达店）',
                     distance: '345m',
                     stars: ['<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>'],
-                    point: '5星',
+                    point: '5分',
                     saleNum: 987,
-                    medList: [
-                        {
-                            img: '../img/img1.png',
-                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                            price: '￥377.65'
-                        },
-                        {
-                            img: '../img/img2.png',
-                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                            price: '￥377.65'
-                        },
-                        {
-                            img: '../img/img3.png',
-                            title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
-                            price: '￥377.65'
-                        },
+                    medList:  [
+                        [
+                            {
+                                img: '../img/img1.png',
+                                title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price: 74.31
+                            },
+                            {
+                                img: '../img/img2.png',
+                                title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price:65.36
+                            },
+                            {
+                                img: '../img/img3.png',
+                                title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                                price:87
+                            },
+                        ],
+                        [
+                            {
+                                img: '../img/img2.png',
+                                title: '211钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price: 34
+                            },
+                            {
+                                img: '../img/img3.png',
+                                title: '222钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                                price: 56
+                            },
+                            {
+                                img: '../img/img1.png',
+                                title: '223钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price: 89
+                            },
+                        ]
                     ]
                 },
                 {
                     logo: '../img/logo.png',
                     shopName: '同仁堂大药房（万达店）',
-                    distance: '345m',
+                    distance: '1.6km',
                     stars: ['<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>', '<span class="mui-icon mui-icon-star"></span>'],
-                    point: '5星',
+                    point: '5分',
                     saleNum: 987,
-                    medList: [
-                        {
-                            img: '../img/img1.png',
-                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                            price: '￥377.65'
-                        },
-                        {
-                            img: '../img/img2.png',
-                            title: '钙尔奇 碳酸钙D3 咀嚼片30片',
-                            price: '￥377.65'
-                        },
-                        {
-                            img: '../img/img3.png',
-                            title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
-                            price: '￥377.65'
-                        },
+                    medList:  [
+                        [
+                            {
+                                img: '../img/img1.png',
+                                title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price: 59.6388888
+                            },
+                            {
+                                img: '../img/img2.png',
+                                title: '钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price:85.661
+                            },
+                            {
+                                img: '../img/img3.png',
+                                title: '钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                                price:124
+                            },
+                        ],
+                        [
+                            {
+                                img: '../img/img2.png',
+                                title: '211钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price: 34
+                            },
+                            {
+                                img: '../img/img3.png',
+                                title: '222钙尔奇 碳酸钙D3 咀嚼片30片sdfffffa',
+                                price: 56
+                            },
+                            {
+                                img: '../img/img1.png',
+                                title: '223钙尔奇 碳酸钙D3 咀嚼片30片',
+                                price: 89
+                            },
+                        ]
                     ]
                 }
             ]
         },
+        filters:{
+            toMoney:function(value){
+                return value.toFixed(2);
+            }
+        },
         components: {
-            footerComponent
+            footerComponent:footerComponent
         }
     })
     //    mui
-    var gallery = mui('.mui-slider'); //    轮播图
+    mui.init();
+    var gallery = mui('.swiper'); //    轮播图
     gallery.slider({
         interval: 2000//自动轮播周期，若为0则不自动播放，默认为0；
     });
-//    ajax
+    //    ajax
 
 </script>
 </html>

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>惠惠|分类</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
     <script src="../js/flex_rem.js"></script>
     <link rel="stylesheet" href="../css/mui.min.css">
     <link rel="stylesheet" href="../css/reset.css">
@@ -15,7 +16,9 @@
     <header>
         2222
     </header>
-    <footer-component :footer-active="1"></footer-component>
+    <div class="footer">
+        <footer-component :footer-active="1"></footer-component>
+    </div>
 </div>
 </body>
 
@@ -26,10 +29,9 @@
 <script>
     var vm = new Vue({
         el: '#categoryApp',
-        data:{
-        },
-        components:{
-            footerComponent
+        data: {},
+        components: {
+            footerComponent: footerComponent
         }
     })
 

@@ -15,7 +15,9 @@
     <header>
         5555
     </header>
-    <footer-component :footer-active="4"></footer-component>
+    <div class="footer">
+        <footer-component :footer-active="4"></footer-component>
+    </div>
 </div>
 </body>
 
@@ -27,9 +29,10 @@
     var vm = new Vue({
         el: '#mineApp',
         data:{
+            a:9999
         },
         components:{
-            footerComponent
+            footerComponent:footerComponent
         }
     })
 
